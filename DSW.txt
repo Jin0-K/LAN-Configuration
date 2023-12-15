@@ -1,0 +1,82 @@
+@DSW11
+conf t
+int range e1/0-3
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+end
+
+@DSW12 - 2 AP, 1 VPC
+conf t
+int range e1/0-2
+switchport mode access
+switchport access vlan 18
+spanning-tree portfast
+end
+
+@DSW13 - 2 AP
+conf t
+int range e1/0-1
+switchport mode access
+switchport access vlan 26
+spanning-tree portfast
+end
+
+@DSW14 - 4 AP
+conf t
+int range e1/0-3
+switchport mode access
+switchport access vlan 34
+spanning-tree portfast
+end
+
+@DSW15 - 3 AP
+conf t
+int range e1/0-3
+switchport mode access
+switchport access vlan 42
+spanning-tree portfast
+end
+
+@DSW16 - 2 AP
+conf t
+int range e1/0-1
+switchport mode access
+switchport access vlan 50
+spanning-tree portfast
+end
+
+@DSW17 - 6 Servers
+conf t
+!
+int e1/0
+switchport mode access
+switchport access vlan 51
+spanning-tree portfast
+!
+int e1/1
+switchport mode access
+switchport access vlan 52
+spanning-tree portfast
+!
+int e1/2
+switchport mode access
+switchport access vlan 53
+spanning-tree portfast
+!
+int e1/3
+switchport mode access
+switchport access vlan 54
+spanning-tree portfast
+!
+int e2/0
+switchport mode access
+switchport access vlan 55
+spanning-tree portfast
+!
+int e2/1
+switchport mode access
+switchport access vlan 56
+spanning-tree portfast
+!
+end

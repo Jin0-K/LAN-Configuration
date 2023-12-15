@@ -1,0 +1,106 @@
+@GW1
+conf t
+int e1/0
+no shutdown
+!
+int e1/0.1
+encapsulation dot1q 1
+ip address 172.16.100.201 255.255.255.0
+!
+int e1/0.10
+encapsulation dot1q 10
+ip address 172.16.10.201 255.255.255.0
+!
+int e1/0.18
+encapsulation dot1q 18
+ip address 172.16.18.201 255.255.255.0
+!
+int e1/0.26
+encapsulation dot1q 26
+ip address 172.16.26.201 255.255.255.0
+!
+int e1/0.34
+encapsulation dot1q 34
+ip address 172.16.34.201 255.255.255.0
+!
+int e1/0.42
+encapsulation dot1q 42
+ip address 172.16.42.201 255.255.255.0
+!
+int e1/0.50
+encapsulation dot1q 50
+ip address 172.16.50.201 255.255.255.0
+!
+int e1/0.51
+encapsulation dot1q 51
+ip address 172.16.51.201 255.255.255.0
+!
+int e1/0.52
+encapsulation dot1q 52
+ip address 172.16.52.201 255.255.255.0
+!
+int e1/0.53
+encapsulation dot1q 53
+ip address 172.16.53.201 255.255.255.0
+!
+end
+
+
+@GW2
+conf t
+int e1/0
+no shutdown
+!
+int e1/0.1
+encapsulation dot1q 1
+ip address 172.16.100.202 255.255.255.0
+!
+int e1/0.10
+encapsulation dot1q 10
+ip address 172.16.10.202 255.255.255.0
+!
+int e1/0.18
+encapsulation dot1q 18
+ip address 172.16.18.202 255.255.255.0
+!
+int e1/0.26
+encapsulation dot1q 26
+ip address 172.16.26.202 255.255.255.0
+!
+int e1/0.34
+encapsulation dot1q 34
+ip address 172.16.34.202 255.255.255.0
+!
+int e1/0.42
+encapsulation dot1q 42
+ip address 172.16.42.202 255.255.255.0
+!
+int e1/0.50
+encapsulation dot1q 50
+ip address 172.16.50.202 255.255.255.0
+!
+int e1/0.51
+encapsulation dot1q 51
+ip address 172.16.51.202 255.255.255.0
+!
+int e1/0.52
+encapsulation dot1q 52
+ip address 172.16.52.202 255.255.255.0
+!
+int e1/0.53
+encapsulation dot1q 53
+ip address 172.16.53.202 255.255.255.0
+!
+int e1/0.54
+encapsulation dot1q 54
+ip address 172.16.54.202 255.255.255.0
+!
+int e1/0.55
+encapsulation dot1q 55
+ip address 172.16.55.202 255.255.255.0
+!
+int e1/0.56
+encapsulation dot1q 56
+ip address 172.16.56.202 255.255.255.0
+!
+end
