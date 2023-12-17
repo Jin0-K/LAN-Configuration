@@ -104,3 +104,221 @@ encapsulation dot1q 56
 ip address 172.16.56.202 255.255.255.0
 !
 end
+
+@GW1
+conf t
+int e0/0
+ip address 192.168.2.201 255.255.255.0
+no shutdown
+!
+ip route 0.0.0.0 0.0.0.0 192.168.2.254
+end
+
+
+#Set IP address and static routing
+@GW2
+conf t
+int e0/0
+ip address 192.168.2.202 255.255.255.0
+no shutdown
+!
+ip route 0.0.0.0 0.0.0.0 192.168.2.254
+end
+
+#NAT
+@GW1, GW2
+conf t
+!
+int e0/0
+ip nat outside
+!
+int e0/1.1
+ip nat inside
+!
+int e0/1.10
+ip nat inside
+!
+int e0/1.18
+ip nat inside
+!
+int e0/1.26
+ip nat inside
+!
+int e0/1.34
+ip nat inside
+!
+int e0/1.42
+ip nat inside
+!
+int e0/1.50
+ip nat inside
+!
+int e0/1.51
+ip nat inside
+!
+int e0/1.52
+ip nat inside
+!
+int e0/1.53
+ip nat inside
+!
+int e0/1.54
+ip nat inside
+!
+int e0/1.55
+ip nat inside
+!
+int e0/1.56
+ip nat inside
+!
+end
+
+##HSRP
+@GW1 (Active Router for vlan 1,10,18,34,51,53,55)
+conf t
+track 10 interface e0/0 line-protocol
+!
+int e1/0.1
+standby 1 ip 172.16.100.252
+standby 1 priority 120
+standby 1 preempt
+standby 1 track 10 decrement 30
+!
+int e1/0.10
+standby 10 ip 172.16.10.252
+standby 10 priority 120
+standby 10 preempt
+standby 10 track 10 decrement 30
+!
+int e1/0.18
+standby 18 ip 172.16.18.252
+standby 18 priority 120
+standby 18 preempt
+standby 18 track 10 decrement 30
+!
+int e1/0.34
+standby 34 ip 172.16.34.252
+standby 34 priority 120
+standby 34 preempt
+standby 34 track 10 decrement 30
+!
+int e1/0.51
+standby 51 ip 172.16.51.252
+standby 51 priority 120
+standby 51 preempt
+standby 51 track 10 decrement 30
+!
+int e1/0.53
+standby 53 ip 172.16.53.252
+standby 53 priority 120
+standby 53 preempt
+standby 53 track 10 decrement 30
+!
+int e1/0.55
+standby 55 ip 172.16.55.252
+standby 55 priority 120
+standby 55 preempt
+standby 55 track 10 decrement 30
+!
+int e1/0.26
+standby 26 ip 172.16.26.252
+standby 26 preempt
+!
+int e1/0.42
+standby 42 ip 172.16.42.252
+standby 42 preempt
+!
+int e1/0.50
+standby 50 ip 172.16.50.252
+standby 50 preempt
+!
+int e1/0.52
+standby 52 ip 172.16.52.252
+standby 52 preempt
+!
+int e1/0.54
+standby 54 ip 172.16.54.252
+standby 54 preempt
+!
+int e1/0.56
+standby 56 ip 172.16.56.252
+standby 56 preempt
+!
+end
+
+@GW2 (Active Router for vlan 26,42,50,52,54,56)
+conf t
+!
+int e1/0.26
+standby 26 ip 172.16.26.252
+standby 26 priority 120
+standby 26 preempt
+standby 26 track 10 decrement 30
+!
+int e1/0.42
+standby 42 ip 172.16.42.252
+standby 42 priority 120
+standby 42 preempt
+standby 42 track 10 decrement 30
+!
+int e1/0.50
+standby 50 ip 172.16.50.252
+standby 50 priority 120
+standby 50 preempt
+standby 50 track 10 decrement 30
+!
+int e1/0.52
+standby 52 ip 172.16.52.252
+standby 52 priority 120
+standby 52 preempt
+standby 52 track 10 decrement 30
+!
+int e1/0.54
+standby 54 ip 172.16.54.252
+standby 54 priority 120
+standby 54 preempt
+standby 54 track 10 decrement 30
+!
+int e1/0.56
+standby 56 ip 172.16.56.252
+standby 56 priority 120
+standby 56 preempt
+standby 56 track 10 decrement 30
+!
+int e1/0.1
+standby 1 ip 172.16.100.252
+standby 1 preempt
+!
+int e1/0.10
+standby 10 ip 172.16.10.252
+standby 10 preempt
+!
+int e1/0.18
+standby 18 ip 172.16.18.252
+standby 18 preempt
+!
+int e1/0.26
+standby 26 ip 172.16.26.252
+standby 26 preempt
+!
+int e1/0.34
+standby 34 ip 172.16.34.252
+standby 34 preempt
+!
+int e1/0.42
+standby 42 ip 172.16.42.252
+standby 42 preempt
+!
+int e1/0.51
+standby 51 ip 172.16.51.252
+standby 51 preempt
+!
+int e1/0.53
+standby 53 ip 172.16.53.252
+standby 53 preempt
+!
+int e1/0.55
+standby 55 ip 172.16.55.252
+standby 55 preempt
+!
+end

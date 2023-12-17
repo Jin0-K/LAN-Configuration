@@ -18,3 +18,21 @@ switchport trunk encaps dot1q
 switchport mode trunk
 spanning-tree portfast trunk
 end
+
+##PVST
+@Core 1
+conf t
+spanning-tree vlan 10,18,34,51,53,55 priority 4096
+spanning-tree vlan 26,42,50,52,54,56 priority 16384
+end
+
+@Core 2
+conf t
+spanning-tree vlan 10,18,34,51,53,55 priority 16384
+spanning-tree vlan 26,42,50,52,54,56 priority 4096
+end
+
+conf t
+int e0/0
+spanning-tree portfast
+end
